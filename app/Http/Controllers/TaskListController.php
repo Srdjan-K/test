@@ -29,7 +29,7 @@ class TaskListController extends Controller
 
         $task_list = TaskList::all();
 
-        return view('task-lists' , [ 'task_list' => $task_list ]);
+        return view('task-lists.task-lists' , [ 'task_list' => $task_list ]);
 
     }
 

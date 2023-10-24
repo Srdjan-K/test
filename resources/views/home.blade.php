@@ -18,7 +18,7 @@
 
                     <h1> Home Page </h1>
 
-                    <a href="{{route('task-lists.view')}}"> Pregled Lista Taskova </a>
+                    <a href="{{route('task-lists.view')}}"> Pregled Listi Taskova </a>
                     <br>
                     <a href="{{route('tasks.view')}}"> Pregled Taskova </a>
         
