@@ -19,4 +19,6 @@ Route::get('/', function () {
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/task-lists', [App\Http\Controllers\TaskListController::class, 'index'])->name('task-lists.view');
+Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->name('tasks.view');
 

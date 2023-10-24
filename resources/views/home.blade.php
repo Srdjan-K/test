@@ -9,6 +9,10 @@
 <body>
 
         <h1> Home Page </h1>
-    
+
+        <a href="{{route('task-lists.view')}}"> Pregled Lista Taskova </a>
+        <br>
+        <a href="{{route('tasks.view')}}"> Pregled Taskova </a>
+
 </body>
 </html>
