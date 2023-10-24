@@ -37,7 +37,7 @@ return new class extends Migration
             $table->integer('position');
             $table->dateTime('start_on')->nullable()->default(null);
 
-            $table->dateTime('due_on');
+            $table->dateTime('due_on')->nullable()->default(null);
             $table->text('labels');
             $table->integer('open_subtasks');
             $table->integer('comments_count');
