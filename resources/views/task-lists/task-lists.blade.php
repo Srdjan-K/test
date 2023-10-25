@@ -17,11 +17,28 @@
                     {{-- {{ __('You are logged in!') }} --}}
 
 
+                    @if( Session::has('task_list_deleted_message') )
 
-                    <h1> <a href="{{route('home')}}"> << Home </a> </h1>
+                        <div   class="alert alert-success">{{ Session::get('task_list_deleted_message') }}</div>
+                    
+                    @elseif( Session::has('task_list_created_message') )
+                        
+                        <div   class="alert alert-success">{{ Session::get('task_list_created_message') }}</div>
+                    
+                    @elseif( Session::has('task_list_updated_message') )
+                        
+                        <div   class="alert alert-success">{{ Session::get('task_list_updated_message') }}</div>
+            
+                    @endif
+
+
+
+
+                    <h1> <a href="{{route('home')}}"> << Home </a> /// <a href="{{route('task-lists.create')}}">Create New Task List</a> </h1>
 
                     @foreach ($task_list as $list)
-                        <p> {{ $list->id }} / 
+                        <p> 
+                            {{ $list->id }} / 
                             {{ $list->name }} / 
                             {{-- {{ $list->open_tasks }} / 
                             {{ $list->completed_tasks }} / 
@@ -30,7 +47,15 @@
                             {{ $list->is_trashed }} / 
                             {{ $list->created_at }} / 
                             {{ $list->updated_at }} /  --}}
+
+                            <a href="{{route('task-lists.edit',  $list->id )}}">
+                                Update
+                            </a>
+                            /
+                            <a href="{{route('task-lists.delete',  $list->id )}}">Delete</a>
+
                         </p>
+
                     @endforeach
                     
                 </div>

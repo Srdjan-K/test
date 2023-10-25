@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="task_is_completed">Task Is Completed</label>
+                            <label for="task_is_completed">Task Is Completed [ 0 or 1 ] </label>
                             <input  type="text" 
                                     id="task_is_completed" 
                                     name="task_is_completed" 
@@ -64,7 +64,7 @@
 
 
                         <div class="form-group">
-                            <label for="task_position">Task Position</label>
+                            <label for="task_position">Task Position [ 0 or 1 or 2 or 3 or ... ] </label>
                             <input  type="text" 
                                     id="task_position" 
                                     name="task_position" 
@@ -74,7 +74,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="task_start_on">Task Start On</label>
+                            <label for="task_start_on">Task Start On [ 2023-10-25 00:00:00 ] </label>
                             <input  type="text" 
                                     id="task_start_on" 
                                     name="task_start_on" 
@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="task_due_on">Task Due On</label>
+                            <label for="task_due_on">Task Due On [ 2023-10-28 00:00:00 ] </label>
                             <input  type="text" 
                                     id="task_due_on" 
                                     name="task_due_on" 
@@ -94,7 +94,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="task_labels">Task Labels</label>
+                            <label for="task_labels">Task Labels [1,2,3, ...] </label>
                             <input  type="text" 
                                     id="task_labels" 
                                     name="task_labels" 
@@ -104,7 +104,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="task_open_subtasks">Task Open Subtasks</label>
+                            <label for="task_open_subtasks">Task Open Subtasks [ 0 or 1 or 2 or 3 or ... ] </label>
                             <input  type="text" 
                                     id="task_open_subtasks" 
                                     name="task_open_subtasks" 
@@ -114,7 +114,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="task_comments_count">Task Comment Count</label>
+                            <label for="task_comments_count">Task Comment Count [ 0 or 1 or 2 or 3 or ... ] </label>
                             <input  type="text" 
                                     id="task_comments_count" 
                                     name="task_comments_count" 
@@ -124,7 +124,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="task_assignee">Task Assignee</label>
+                            <label for="task_assignee">Task Assignee [1,2,3 ...] </label>
                             <input  type="text" 
                                     id="task_assignee" 
                                     name="task_assignee" 
@@ -134,7 +134,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="task_is_important">Task Is Important</label>
+                            <label for="task_is_important">Task Is Important [ 0 or 1 ] </label>
                             <input  type="text" 
                                     id="task_is_important" 
                                     name="task_is_important" 
@@ -144,7 +144,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="task_completed_on">Task Completed On</label>
+                            <label for="task_completed_on">Task Completed On [ 2023-10-30 00:00:00 ] </label>
                             <input  type="text" 
                                     id="task_completed_on" 
                                     name="task_completed_on" 

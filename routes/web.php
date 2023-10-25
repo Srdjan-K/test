@@ -25,15 +25,19 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // neophodan LOGIN za pristup ovim stranicama
 Route::middleware('auth')->group( function(){
 
-    Route::get('/task-lists', [App\Http\Controllers\TaskListController::class, 'index'])->name('task-lists.view');
-    Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->name('tasks.view');
-
     
+    Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->name('tasks.view');
     Route::get('/tasks/create', [App\Http\Controllers\TaskController::class, 'create'])->name('tasks.create');
     Route::post('/tasks/store', [App\Http\Controllers\TaskController::class, 'store'])->name('tasks.store');
     Route::get('/tasks/edit/{task}', [App\Http\Controllers\TaskController::class, 'edit'])->name('tasks.edit');
     Route::patch('/tasks/update/{task}', [App\Http\Controllers\TaskController::class, 'update'])->name('tasks.update');
-
     Route::get('/tasks/delete/{task}', [App\Http\Controllers\TaskController::class, 'destroy'])->name('tasks.delete');
+
+    Route::get('/task-lists', [App\Http\Controllers\TaskListController::class, 'index'])->name('task-lists.view');
+    Route::get('/task-lists/create', [App\Http\Controllers\TaskListController::class, 'create'])->name('task-lists.create');
+    Route::post('/task-lists/store', [App\Http\Controllers\TaskListController::class, 'store'])->name('task-lists.store');
+    Route::get('/task-lists/edit/{task_list}', [App\Http\Controllers\TaskListController::class, 'edit'])->name('task-lists.edit');
+    Route::patch('/task-lists/update/{task_list}', [App\Http\Controllers\TaskListController::class, 'update'])->name('task-lists.update');
+    Route::get('/task-lists/delete/{task_list}', [App\Http\Controllers\TaskListController::class, 'destroy'])->name('task-lists.delete');
 
 });
