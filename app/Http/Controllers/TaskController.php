@@ -52,18 +52,17 @@ class TaskController extends Controller
 
         $task = [];
 
-        $task["name"] =  $input["task_name"];
-        $task["is_completed"] =  $input["task_is_completed"];
-        $task["name"] =  $input["task_name"];
-        $task["task_list_id"] =  $input["task_task_list_id"];
-        $task["position"] =  $input["task_position"];
+        $task["name"] = ( !empty($input["task_name"]) ) ? $input["task_name"] : "DEFAULT TASK NAME";
+        $task["is_completed"] = ( !empty($input["task_is_completed"]) ) ? $input["task_is_completed"] : 0;
+        $task["task_list_id"] =  ( !empty($input["task_task_list_id"]) ) ? $input["task_task_list_id"] : 1;
+        $task["position"] =  ( !empty($input["task_position"]) ) ? $input["task_position"] : 0;
         $task["start_on"] =  $input["task_start_on"];
         $task["due_on"] =  $input["task_due_on"];
-        $task["labels"] =  $input["task_labels"];
-        $task["open_subtasks"] =  $input["task_open_subtasks"];
-        $task["comments_count"] =  $input["task_comments_count"];
-        $task["assignee"] =  $input["task_assignee"];
-        $task["is_important"] =  $input["task_is_important"];
+        $task["labels"] =  ( !empty($input["task_labels"]) ) ? $input["task_labels"] : "[]";
+        $task["open_subtasks"] =  ( !empty($input["task_open_subtasks"]) ) ? $input["task_open_subtasks"] : 0;
+        $task["comments_count"] =  ( !empty($input["task_comments_count"]) ) ? $input["task_comments_count"] : 0;
+        $task["assignee"] =  ( !empty($input["task_assignee"]) ) ? $input["task_assignee"] : "[]";
+        $task["is_important"] =  ( !empty($input["task_is_important"]) ) ? $input["task_is_important"] : 0;
         $task["completed_on"] =  $input["task_completed_on"];
 
         // persisting file data into database

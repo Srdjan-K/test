@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
         DB::unprepared(File::get(base_path() . '/database/seeders/DatabaseTablesWithData/users.sql'));
         DB::unprepared(File::get(base_path() . '/database/seeders/DatabaseTablesWithData/tasks.sql'));
         DB::unprepared(File::get(base_path() . '/database/seeders/DatabaseTablesWithData/task_lists.sql'));
+        DB::unprepared(File::get(base_path() . '/database/seeders/DatabaseTablesWithData/labels.sql'));
 
     }
 }

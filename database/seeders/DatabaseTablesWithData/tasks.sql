@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 26, 2023 at 06:46 AM
+-- Generation Time: Oct 26, 2023 at 02:44 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -30,23 +30,23 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `tasks`;
 CREATE TABLE IF NOT EXISTS `tasks` (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_completed` tinyint(1) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_completed` tinyint(1) NOT NULL DEFAULT '0',
   `task_list_id` bigint UNSIGNED NOT NULL,
-  `position` int NOT NULL,
+  `position` int NOT NULL DEFAULT '0',
   `start_on` datetime DEFAULT NULL,
   `due_on` datetime DEFAULT NULL,
-  `labels` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `open_subtasks` int NOT NULL,
-  `comments_count` int NOT NULL,
-  `assignee` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_important` tinyint(1) NOT NULL,
+  `labels` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `open_subtasks` int NOT NULL DEFAULT '0',
+  `comments_count` int NOT NULL DEFAULT '0',
+  `assignee` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_important` tinyint(1) NOT NULL DEFAULT '0',
   `completed_on` datetime DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `tasks_task_list_id_foreign` (`task_list_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tasks`
@@ -70,7 +70,8 @@ INSERT INTO `tasks` (`id`, `name`, `is_completed`, `task_list_id`, `position`, `
 (17, 'Creating and implementing UI patterns for the page', 1, 5, 1, NULL, NULL, '[]', 0, 0, '[]', 0, '2023-09-10 00:00:00', NULL, NULL),
 (21, 'Srdjan Test Task 01', 0, 1, 1, '2023-05-08 00:00:00', '2023-05-10 00:00:00', '[]', 0, 0, '[1,2,3]', 0, NULL, '2023-10-24 14:27:33', '2023-10-24 14:29:14'),
 (22, 'Srdjan Test Task 02', 0, 3, 1, '2023-05-08 00:00:00', '2023-05-10 00:00:00', '[]', 0, 0, '[1]', 0, NULL, '2023-10-24 14:28:04', '2023-10-24 14:28:57'),
-(23, 'Srdjan Test Task 03', 1, 4, 1, '2023-05-08 00:00:00', '2023-05-10 00:00:00', '[1,2,3]', 0, 0, '[1]', 0, '2023-05-12 00:00:00', '2023-10-24 14:28:39', '2023-10-24 14:28:39');
+(23, 'Srdjan Test Task 03', 1, 4, 1, '2023-05-08 00:00:00', '2023-05-10 00:00:00', '[1,2,3]', 0, 0, '[1]', 0, '2023-05-12 00:00:00', '2023-10-24 14:28:39', '2023-10-24 14:28:39'),
+(26, 'Srdjan Test Task 04', 0, 12, 0, NULL, NULL, '[]', 0, 0, '[]', 0, NULL, '2023-10-26 12:43:34', '2023-10-26 12:43:34');
 
 --
 -- Constraints for dumped tables

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 26, 2023 at 06:46 AM
+-- Generation Time: Oct 26, 2023 at 02:44 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -30,12 +30,12 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `task_lists`;
 CREATE TABLE IF NOT EXISTS `task_lists` (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `open_tasks` int NOT NULL,
-  `completed_tasks` int NOT NULL,
-  `position` int NOT NULL,
-  `is_completed` tinyint(1) NOT NULL,
-  `is_trashed` tinyint(1) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `open_tasks` int NOT NULL DEFAULT '0',
+  `completed_tasks` int NOT NULL DEFAULT '0',
+  `position` int NOT NULL DEFAULT '0',
+  `is_completed` tinyint(1) NOT NULL DEFAULT '0',
+  `is_trashed` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)

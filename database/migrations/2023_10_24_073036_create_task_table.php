@@ -14,35 +14,21 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tasks', function (Blueprint $table) {
-            
-            // "id": 1,
-            // "name": "Designing and implementing UI components",
-            // "is_completed": false,
-            // "task_list_id": 1,
-            // "position": 0,
-            // "start_on": null,
-            // "due_on": "2023-01-03T00:00:00.000Z",
-            // "labels": [],
-            // "open_subtasks": 0,
-            // "comments_count": 0,
-            // "assignee": [],
-            // "is_important": false,
-            // "completed_on": null
-            
+
             $table->id();
             
             $table->string('name');
-            $table->boolean('is_completed');
+            $table->boolean('is_completed')->default(false);
             $table->foreignId('task_list_id')->constrained()->onDelete('cascade');
-            $table->integer('position');
+            $table->integer('position')->default(0);
             $table->dateTime('start_on')->nullable()->default(null);
 
             $table->dateTime('due_on')->nullable()->default(null);
-            $table->text('labels');
-            $table->integer('open_subtasks');
-            $table->integer('comments_count');
-            $table->text('assignee');
-            $table->boolean('is_important');
+            $table->string('labels')->default("[]");
+            $table->integer('open_subtasks')->default(0);
+            $table->integer('comments_count')->default(0);
+            $table->string('assignee')->default("[]");
+            $table->boolean('is_important')->default(false);
             $table->dateTime('completed_on')->nullable()->default(null);
 
             $table->timestamps();

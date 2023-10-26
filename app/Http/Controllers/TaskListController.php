@@ -47,13 +47,13 @@ class TaskListController extends Controller
 
         $task_list = [];
 
-        $task_list["name"] =  $input["task_list_name"];
-        $task_list["is_completed"] =  $input["task_list_is_completed"];
-        $task_list["open_tasks"] =  $input["task_list_open_tasks"];
-        $task_list["completed_tasks"] =  $input["task_list_completed_tasks"];
-        $task_list["position"] =  $input["task_list_position"];
-        $task_list["is_completed"] =  $input["task_list_is_completed"];
-        $task_list["is_trashed"] =  $input["task_list_is_trashed"];
+        $task_list["name"] =  ( !empty($input["task_list_name"]) ) ? $input["task_list_name"] : "DEFAULT NAME of Task List";
+        $task_list["is_completed"] =  ( !empty($input["task_list_is_completed"]) ) ? $input["task_list_is_completed"] : 0;
+        $task_list["open_tasks"] =  ( !empty($input["task_list_open_tasks"]) ) ? $input["task_list_open_tasks"] : 0;
+        $task_list["completed_tasks"] = ( !empty($input["task_list_completed_tasks"]) ) ? $input["task_list_completed_tasks"] : 0;
+        $task_list["position"] =  ( !empty($input["task_list_position"]) ) ? $input["task_list_position"] : 0;
+        $task_list["is_completed"] =  ( !empty($input["task_list_is_completed"]) ) ? $input["task_list_is_completed"] : 0;
+        $task_list["is_trashed"] =  ( !empty($input["task_list_is_trashed"]) ) ? $input["task_list_is_trashed"] : 0;
 
         // persisting file data into database
         $task_list_id = TaskList::create($task_list)->id;

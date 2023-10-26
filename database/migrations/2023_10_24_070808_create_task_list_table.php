@@ -14,23 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('task_lists', function (Blueprint $table) {
-
-            // "id": 5,
-            // "name": "Testing",
-            // "open_tasks": 1,
-            // "completed_tasks": 1,
-            // "position": 4,
-            // "is_completed": false,
-            // "is_trashed": false
             
             $table->id();
             
             $table->string('name');
-            $table->integer('open_tasks');
-            $table->integer('completed_tasks');
-            $table->integer('position');
-            $table->boolean('is_completed');
-            $table->boolean('is_trashed');
+            $table->integer('open_tasks')->default(0);
+            $table->integer('completed_tasks')->default(0);
+            $table->integer('position')->default(0);
+            $table->boolean('is_completed')->default(false);
+            $table->boolean('is_trashed')->default(false);
 
             $table->timestamps();
             
