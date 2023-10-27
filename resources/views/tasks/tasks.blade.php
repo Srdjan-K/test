@@ -95,7 +95,7 @@
                                 @case( $task->task_list_id == 1 && $task->is_completed == false )
                                     <a href="{{route('tasks.edit',  $task->id )}}">
                                         <span class="to_do">
-                                            {{ $task->task_list->name }} 
+                                            {{ ( isset($task->task_list->name) && $task->task_list->name != null ) ? $task->task_list->name : "UnKnown [ ID : $task->task_list_id ]" }} 
                                         </span> 
                                         / Update
                                     </a>
@@ -106,7 +106,7 @@
                                 @case( $task->task_list_id == 2 && $task->is_completed == false )
                                     <a href="{{route('tasks.edit',  $task->id )}}">
                                         <span class="in_progress">
-                                            {{ $task->task_list->name }} 
+                                            {{ ( isset($task->task_list->name) && $task->task_list->name != null ) ? $task->task_list->name : "UnKnown [ ID : $task->task_list_id ]" }}  
                                         </span> / Update
                                     </a>
                                     /
@@ -116,7 +116,7 @@
                                 @case( $task->task_list_id == 3 && $task->is_completed == false )
                                     <a href="{{route('tasks.edit',  $task->id )}}">
                                         <span class="blocked">
-                                            {{ $task->task_list->name }} 
+                                            {{ ( isset($task->task_list->name) && $task->task_list->name != null ) ? $task->task_list->name : "UnKnown [ ID : $task->task_list_id ]" }}  
                                         </span> / Update
                                     </a>
                                     /
@@ -126,7 +126,7 @@
                                 @case( $task->task_list_id == 4 && $task->is_completed == false )
                                     <a href="{{route('tasks.edit',  $task->id )}}">
                                         <span class="ready_for_review">
-                                            {{ $task->task_list->name }} 
+                                            {{ ( isset($task->task_list->name) && $task->task_list->name != null ) ? $task->task_list->name : "UnKnown [ ID : $task->task_list_id ]" }}  
                                         </span> / Update
                                     </a>
                                     /
@@ -136,7 +136,7 @@
                                 @case( $task->task_list_id == 5 && $task->is_completed == false )
                                     <a href="{{route('tasks.edit',  $task->id )}}">
                                         <span class="testing">
-                                            {{ $task->task_list->name }} 
+                                            {{ ( isset($task->task_list->name) && $task->task_list->name != null ) ? $task->task_list->name : "UnKnown [ ID : $task->task_list_id ]" }}  
                                         </span>  / Update
                                     </a>
                                     /
@@ -146,7 +146,7 @@
                                 @case( $task->is_completed == true )
                                     <a href="{{route('tasks.edit',  $task->id )}}">
                                         <span class="completed">
-                                            [ {{ $task->task_list->name }} ] >> COMPLETED ! 
+                                            [ {{ ( isset($task->task_list->name) && $task->task_list->name != null ) ? $task->task_list->name : "UnKnown [ ID : $task->task_list_id ]" }}  ] >> COMPLETED ! 
                                         </span>  / Update
                                     </a>
                                     /
@@ -156,13 +156,14 @@
                                 @default
                                     <a href="{{route('tasks.edit',  $task->id )}}">
                                         <span class="default">
-                                            {{ $task->task_list->name }} 
+                                            {{ ( isset($task->task_list->name) && $task->task_list->name != null ) ? $task->task_list->name : "UnKnown [ ID : $task->task_list_id ]" }}  
                                         </span> / Update
                                     </a>
                                     /
                                     <a href="{{route('tasks.delete',  $task->id )}}">Delete</a>
                                     
                             @endswitch
+
                             {{-- {{ $task->position }} / 
                             {{ $task->start_on }} / 
                             {{ $task->due_on }} / 
@@ -174,6 +175,7 @@
                             {{ $task->completed_on }} / 
                             {{ $task->created_at }} / 
                             {{ $task->updated_at }} /   --}}
+                            
                         </p>
                     @endforeach
                     

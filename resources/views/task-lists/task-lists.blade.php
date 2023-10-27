@@ -29,10 +29,14 @@
                         
                         <div   class="alert alert-success">{{ Session::get('task_list_updated_message') }}</div>
             
+                    @elseif( Session::has('task_list_restored_message') )
+                        
+                        <div   class="alert alert-success">{{ Session::get('task_list_restored_message') }}</div>
+            
                     @endif
 
 
-
+                    
 
                     <h1> <a href="{{route('home')}}"> << Home </a> /// <a href="{{route('task-lists.create')}}">Create New Task List</a> </h1>
 
@@ -52,8 +56,11 @@
                                 Update
                             </a>
                             /
-                            <a href="{{route('task-lists.delete',  $list->id )}}">Delete</a>
-
+                            @if ( $list->deleted_at !== null )
+                                <span style='color: red;'> [ Soft Deleted ] </span> <a href="{{route('task-lists.delete',  $list->id )}}">Force [ HARD ] Delete</a> /// <a href="{{route('task-lists.restore',  $list->id )}}"> Restore </a>
+                            @else
+                                <a href="{{route('task-lists.delete.soft',  $list->id )}}">Hide [ Soft ] Delete</a>
+                            @endif
                         </p>
 
                     @endforeach

@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+// Auth::routes();
+
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
+
+Route::middleware('auth:sanctum')->group( function(){
+
+    // --- API Routes
+    Route::get('tasks', [App\Http\Controllers\Api\TaskApiController::class, 'index']);
+    Route::get('tasks/{id}', [App\Http\Controllers\Api\TaskApiController::class, 'index'])->name('api.tasks.single.view');
+    // Route::get('tasks/create', [App\Http\Controllers\Api\TaskApiController::class, 'create'])->name('api.tasks.create');
+    Route::post('tasks/store', [App\Http\Controllers\Api\TaskApiController::class, 'store'])->name('api.tasks.store');
+    // Route::get('tasks/edit/{task}', [App\Http\Controllers\Api\TaskApiController::class, 'edit'])->name('api.tasks.edit');
+    Route::patch('tasks/update/{task}', [App\Http\Controllers\Api\TaskApiController::class, 'update'])->name('api.tasks.update');
+    Route::get('tasks/delete/{task}', [App\Http\Controllers\Api\TaskApiController::class, 'destroy'])->name('api.tasks.delete');
+
+    Route::get('task-lists', [App\Http\Controllers\Api\TaskListApiController::class, 'index'])->name('api.task-lists.view');
+    Route::get('task-lists/{id}', [App\Http\Controllers\Api\TaskListApiController::class, 'index'])->name('api.task-lists.single.view');
+    // Route::get('task-lists/create', [App\Http\Controllers\Api\TaskListApiController::class, 'create'])->name('api.task-lists.create');
+    Route::post('task-lists/store', [App\Http\Controllers\Api\TaskListApiController::class, 'store'])->name('api.task-lists.store');
+    // Route::get('task-lists/edit/{task_list}', [App\Http\Controllers\Api\TaskListApiController::class, 'edit'])->name('api.task-lists.edit');
+    Route::patch('task-lists/update/{task_list}', [App\Http\Controllers\Api\TaskListApiController::class, 'update'])->name('api.task-lists.update');
+    Route::get('task-lists/delete/{task_list}', [App\Http\Controllers\Api\TaskListApiController::class, 'destroy'])->name('api.task-lists.delete');
+
+
 });
+
+

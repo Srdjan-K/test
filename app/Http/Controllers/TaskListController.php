@@ -29,7 +29,7 @@ class TaskListController extends Controller
     public function index()
     {
 
-        $task_list = TaskList::all();
+        $task_list = TaskList::withTrashed()->get();
 
         return view('task-lists.task-lists' , [ 'task_list' => $task_list ]);
 
@@ -114,6 +114,18 @@ class TaskListController extends Controller
 
         // dd($task_list->id);
         
+        $task_list->forceDelete();
+
+        Session::flash('task_list_deleted_message', 'Task : ' . $task_list->id . ' / ' . $task_list->name . ' , was deleted !');   // temp session , for messages on FrontEnd
+
+        return back();
+
+    }
+
+    public function destroy_soft(TaskList $task_list){
+
+        // dd($task_list->id);
+        
         $task_list->delete();
 
         Session::flash('task_list_deleted_message', 'Task : ' . $task_list->id . ' / ' . $task_list->name . ' , was deleted !');   // temp session , for messages on FrontEnd
@@ -121,6 +133,35 @@ class TaskListController extends Controller
         return back();
 
     }
+
+    public function restore($task_list_id){
+
+        // 1.Solution - get through list of object, with PHP
+        // $task_list_tashed_all = TaskList::onlyTrashed()->get();
+        // $task_list = "";
+
+        // foreach ($task_list_tashed_all as $obj) {
+        //     if( $obj->id == $task_list_id ){
+        //         $task_list = $obj;
+        //     }
+        // }
+
+        // TaskList::withTrashed()->find($task_list_id)->restore();
+
+        // dd($task_list);
+        
+        // ------------------------------
+
+        // 2.Solution - get through list of object, in DataBase directly
+        $task_list = TaskList::withTrashed()->find($task_list_id);
+        TaskList::withTrashed()->find($task_list_id)->update(['deleted_at' => null]);
+
+        Session::flash('task_list_restored_message', 'Task : ' . $task_list->id . ' / ' . $task_list->name . ' , was RESTORED from Soft Delete !');   // temp session , for messages on FrontEnd
+
+        return back();
+
+    }
+
 
 
 
